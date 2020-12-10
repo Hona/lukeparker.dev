@@ -1,7 +1,7 @@
   server:
-    image: klakegg/hugo:0.78.2
+    image: klakegg/hugo:ext-debian
     command: server
     volumes:
-      - "./src:/src"
+      - "./site:/src"
     ports:
       - "1313:1313"
