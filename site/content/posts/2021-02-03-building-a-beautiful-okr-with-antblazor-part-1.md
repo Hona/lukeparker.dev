@@ -4,7 +4,7 @@ title = "Building a Beautiful OKR with AntBlazor - Part 1"
 slug = "building-a-beautiful-okr-with-antblazor/1"
 tags = ["Blazor", "AntDesign", "AntBlazor", "C#", "OKR"]
 categories = ["Development"]
-series = ["Theme", "Hugo"]
+series = ["OKR"]
 authors = ["Luke Parker"]
 +++
 
