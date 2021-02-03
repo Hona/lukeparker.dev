@@ -1,5 +1,5 @@
 +++ 
-date = "2021-02-04"
+date = "2021-02-03"
 title = "Building a Beautiful OKR with AntBlazor - Part 2"
 slug = "building-a-beautiful-okr-with-antblazor/2"
 tags = ["Blazor", "AntDesign", "AntBlazor", "C#", "OKR"]
