@@ -3,9 +3,12 @@ title = "Projects"
 slug = "projects"
 +++
 ### Starred
+
+> Using GitHub API
+
 {{< rawhtml >}}
 <div id="github-projects"><i>Loading projects using GitHub API...</i></div>
-<script>
+<script async defer>
 var element = document.getElementById("github-projects");
 
 function Get(yourUrl){
