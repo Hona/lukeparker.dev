@@ -2,9 +2,10 @@
 title = "Projects"
 slug = "projects"
 +++
-### Starred
 
 > Using GitHub API
+
+### Starred
 
 {{< rawhtml >}}
 <div id="github-projects"><i>Loading projects using GitHub API...</i></div>
