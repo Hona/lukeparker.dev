@@ -21,7 +21,7 @@ disqusShortname = "lukeparker-dev"
     info = "Software Architect"
     #avatarURL = "https://avatars0.githubusercontent.com/u/10430890?s=460&u=aaa2e46be8ebc7c4a48957e7d336f9673985335c&v=4"
     gravatar = "lukeparker@ssw.com.au"
-    footerContent = "Software Architect at ssw.com.au and SSW TV tv.ssw.com"
+    footerContent = "Software Architect at <a href=\"https://ssw.com.au\">ssw.com.au</a> and <a href=\"https://tv.ssw.com.au\">SSW TV tv.ssw.com</a>"
 
     dateFormat = "January 2, 2006"
 
