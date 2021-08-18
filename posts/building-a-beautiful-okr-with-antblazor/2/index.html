@@ -1,0 +1,178 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=author content="Luke Parker"><meta name=description content="Planning the Backend There is one objective with many key results. I added some properties that I think will be useful. These may change as we figure out the UI/UX a bit more.
+Some feature ideas:
+ Objectives should be toggleable if they are active or not Objectives should have a start and end date Objectives should have a brief title, and a longer description Key Results should have a brief title, and a longer description Key Results should be toggleable if they are active or not Key Results should have a completion percent 0%-100% Key Results should have a priority (higher the number the more important)  public class Objective { public Guid Id { get; set; } public string Title { get; set; } public string Description { get; set; } public DateTime DueDate { get; set; } public DateTime StartDate { get; set; } public bool Active { get; set; } } public class KeyResult { public Guid Id { get; set; } public Guid ObjectiveId { get; set; } public string Title { get; set; } public string Description { get; set; } public bool Active { get; set; } public decimal Completion { get; set; } public int Priority { get; set; } } That&rsquo;s it for the core models!"><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Building a Beautiful OKR with AntBlazor - Part 2"><meta name=twitter:description content="Planning the Backend There is one objective with many key results. I added some properties that I think will be useful. These may change as we figure out the UI/UX a bit more.
+Some feature ideas:
+ Objectives should be toggleable if they are active or not Objectives should have a start and end date Objectives should have a brief title, and a longer description Key Results should have a brief title, and a longer description Key Results should be toggleable if they are active or not Key Results should have a completion percent 0%-100% Key Results should have a priority (higher the number the more important)  public class Objective { public Guid Id { get; set; } public string Title { get; set; } public string Description { get; set; } public DateTime DueDate { get; set; } public DateTime StartDate { get; set; } public bool Active { get; set; } } public class KeyResult { public Guid Id { get; set; } public Guid ObjectiveId { get; set; } public string Title { get; set; } public string Description { get; set; } public bool Active { get; set; } public decimal Completion { get; set; } public int Priority { get; set; } } That&rsquo;s it for the core models!"><meta property="og:title" content="Building a Beautiful OKR with AntBlazor - Part 2"><meta property="og:description" content="Planning the Backend There is one objective with many key results. I added some properties that I think will be useful. These may change as we figure out the UI/UX a bit more.
+Some feature ideas:
+ Objectives should be toggleable if they are active or not Objectives should have a start and end date Objectives should have a brief title, and a longer description Key Results should have a brief title, and a longer description Key Results should be toggleable if they are active or not Key Results should have a completion percent 0%-100% Key Results should have a priority (higher the number the more important)  public class Objective { public Guid Id { get; set; } public string Title { get; set; } public string Description { get; set; } public DateTime DueDate { get; set; } public DateTime StartDate { get; set; } public bool Active { get; set; } } public class KeyResult { public Guid Id { get; set; } public Guid ObjectiveId { get; set; } public string Title { get; set; } public string Description { get; set; } public bool Active { get; set; } public decimal Completion { get; set; } public int Priority { get; set; } } That&rsquo;s it for the core models!"><meta property="og:type" content="article"><meta property="og:url" content="https://www.lukeparker.dev/posts/building-a-beautiful-okr-with-antblazor/2/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-02-03T00:00:00+00:00"><meta property="article:modified_time" content="2021-02-03T00:00:00+00:00"><meta property="og:see_also" content="https://www.lukeparker.dev/posts/building-a-beautiful-okr-with-antblazor/1/"><meta property="og:see_also" content="https://www.lukeparker.dev/posts/building-a-beautiful-okr-with-antblazor/0/"><title>Building a Beautiful OKR with AntBlazor - Part 2 · lukeparker.dev</title><link rel=canonical href=https://www.lukeparker.dev/posts/building-a-beautiful-okr-with-antblazor/2/><link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel=stylesheet><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.1.7/css/fork-awesome.min.css integrity="sha512-9QjPqX/aCNwEQDyMqqMluNOSsHxTwOJNO3d4m5aUeNbyOPm8RcBA5hCUhvGmKFtSmQYGajqPopGtD60FWiWUwg==" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin=anonymous><link rel=stylesheet href=/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz+OMl98=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin=anonymous media=screen><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><script src=https://cdnjs.cloudflare.com/ajax/libs/twemoji/12.0.4/2/twemoji.min.js integrity="sha512-panBjUGuKarjg0qxHggQULmRf9jB/YVCy238hmzBWUuLeOuwMSuJgJcUv3T+rwXUBZ9zeUvc49ZcCRH+EO0H8g==" crossorigin=anonymous></script><meta name=generator content="Hugo 0.81.0"></head><body class=colorscheme-auto onload=twemoji.parse(document.body)><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>lukeparker.dev</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item><a class=navigation-link href=/posts/>Blog</a></li><li class=navigation-item><a class=navigation-link href=/projects/>Projects</a></li><li class=navigation-item><a class=navigation-link href=/contact/>Contact me</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title>Building a Beautiful OKR with AntBlazor - Part 2</h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa fa-calendar" aria-hidden=true></i><time datetime=2021-02-03T00:00:00Z>February 3, 2021</time></span>
+<span class=reading-time><i class="fa fa-clock-o" aria-hidden=true></i>4-minute read</span></div><div class=authors><i class="fa fa-user" aria-hidden=true></i><a href=/authors/luke-parker/>Luke Parker</a></div><div class=categories><i class="fa fa-folder" aria-hidden=true></i><a href=/categories/development/>Development</a></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i><a href=/tags/blazor/>Blazor</a>
+<span class=separator>•</span>
+<a href=/tags/antdesign/>AntDesign</a>
+<span class=separator>•</span>
+<a href=/tags/antblazor/>AntBlazor</a>
+<span class=separator>•</span>
+<a href=/tags/c/>C#</a>
+<span class=separator>•</span>
+<a href=/tags/okr/>OKR</a></div></div></header><div><h2 id=planning-the-backend>Planning the Backend</h2><p>There is one objective with many key results. I added some properties that I think will be useful. These may change as we figure out the UI/UX a bit more.</p><p>Some feature ideas:</p><ul><li>Objectives should be toggleable if they are active or not</li><li>Objectives should have a start and end date</li><li>Objectives should have a brief title, and a longer description</li><li>Key Results should have a brief title, and a longer description</li><li>Key Results should be toggleable if they are active or not</li><li>Key Results should have a completion percent 0%-100%</li><li>Key Results should have a priority (higher the number the more important)</li></ul><div class=highlight><pre style=color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c# data-lang=c#><span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>class</span> Objective
+{
+    <span style=color:#fff;font-weight:700>public</span> Guid Id { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>string</span> Title { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>string</span> Description { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> DateTime DueDate { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> DateTime StartDate { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>bool</span> Active { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+}
+</code></pre></div><div class=highlight><pre style=color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c# data-lang=c#><span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>class</span> KeyResult
+{
+    <span style=color:#fff;font-weight:700>public</span> Guid Id { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> Guid ObjectiveId { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>string</span> Title { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>string</span> Description { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>bool</span> Active { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>decimal</span> Completion { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>int</span> Priority { <span style=color:#fff;font-weight:700>get</span>; <span style=color:#fff;font-weight:700>set</span>; }
+}
+</code></pre></div><p>That&rsquo;s it for the core models! Lets add it to the project&mldr;</p><h2 id=coding-it>Coding it</h2><p>In the <code>OKR.Core</code> project, create a folder called <code>Models</code> - you guessed it, for our domain models. Now add the two models from above in files: <code>Objective.cs</code> and <code>KeyResult.cs</code></p><h3 id=repositories>Repositories</h3><p>Now we have the core models, we need to build an interface that abstracts data access. Lets build two repositories for the Objectives and Key Results.</p><p>Create another folder in <code>OKR.Core</code> called <code>Repositories</code>.</p><p>Data access code, especially in repositories can get pretty repetitive, so lets abstract it to a generic repository:</p><p>IGenericRepository.cs</p><div class=highlight><pre style=color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c# data-lang=c#><span style=color:#fff;font-weight:700>using</span> System.Collections.Generic;
+<span style=color:#fff;font-weight:700>using</span> System.Threading.Tasks;
+
+<span style=color:#fff;font-weight:700>namespace</span> OKR.Core.Repositories
+{
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>interface</span> IGenericRepository&lt;T&gt;
+    {
+        <span style=color:#fff;font-weight:700>public</span> Task AddAsync(T model);
+        <span style=color:#fff;font-weight:700>public</span> Task UpdateAsync(T model);
+        <span style=color:#fff;font-weight:700>public</span> Task DeleteAsync(T model);
+
+        <span style=color:#fff;font-weight:700>public</span> Task&lt;IReadOnlyList&lt;T&gt;&gt; GetAllAsync();
+        <span style=color:#fff;font-weight:700>public</span> Task&lt;IReadOnlyList&lt;T&gt;&gt; GetPagedAsync(<span style=color:#fff;font-weight:700>int</span> page = <span style=color:#ff0;font-weight:700>0</span>);
+    }
+}
+</code></pre></div><p>This code provides the simple CRUD operations on any model <code>T</code></p><p>Now lets build the specific repositories for OKRs:</p><p>IObjectiveRepository.cs</p><div class=highlight><pre style=color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c# data-lang=c#><span style=color:#fff;font-weight:700>using</span> System;
+<span style=color:#fff;font-weight:700>using</span> System.Collections.Generic;
+<span style=color:#fff;font-weight:700>using</span> System.Threading.Tasks;
+<span style=color:#fff;font-weight:700>using</span> OKR.Core.Models;
+
+<span style=color:#fff;font-weight:700>namespace</span> OKR.Core.Repositories
+{
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>interface</span> IObjectiveRepository : IGenericRepository&lt;Objective&gt;
+    {
+        Task&lt;IReadOnlyList&lt;Objective&gt;&gt; GetAllActiveAsync(<span style=color:#fff;font-weight:700>bool</span> active = <span style=color:#fff;font-weight:700>true</span>);
+        Task&lt;IReadOnlyList&lt;Objective&gt;&gt; GetAllWithinDueDateAsync();
+        Task&lt;Objective&gt; GetByIdAsync(Guid id);
+    }
+}
+</code></pre></div><p>Note the added functions that are specific to <code>Objective</code> properties</p><p>IKeyResultRepository.cs</p><div class=highlight><pre style=color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c# data-lang=c#><span style=color:#fff;font-weight:700>using</span> System;
+<span style=color:#fff;font-weight:700>using</span> System.Collections.Generic;
+<span style=color:#fff;font-weight:700>using</span> System.Threading.Tasks;
+<span style=color:#fff;font-weight:700>using</span> OKR.Core.Models;
+
+<span style=color:#fff;font-weight:700>namespace</span> OKR.Core.Repositories
+{
+    <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>interface</span> IKeyResultRepository : IGenericRepository&lt;KeyResult&gt;
+    {
+        Task&lt;IReadOnlyList&lt;KeyResult&gt;&gt; GetAllByObjectiveAsync(Guid objectiveId);
+    }
+}
+</code></pre></div><p>Pretty simple here, I don&rsquo;t think we need to provide any filtering on the data access level here, since there won&rsquo;t be any ridiculous number of key results inside an objective</p><h2 id=mocking-the-repositories>Mocking the Repositories</h2><p>Before we get started with the frontend we have to mock the repositories to get some &lsquo;real&rsquo; data.</p><p>Lets create a new class library project to hold the mock repositories called <code>OKR.Core.Mock</code>. Add a project reference to <code>OKR.Core</code>. Create a folder called <code>Repositories</code> and create the files: <code>MockObjectiveRepository.cs</code> and <code>MockKeyResultRepository.cs</code> - implementing the underlying interface. You should be able to autogenerate the functions like so:</p><div class=highlight><pre style=color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c# data-lang=c#><span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>class</span> MockObjectiveRepository : IObjectiveRepository
+    {
+        <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>async</span> Task AddAsync(Objective model)
+        {
+            <span style=color:#fff;font-weight:700>throw</span> <span style=color:#fff;font-weight:700>new</span> NotImplementedException();
+        }
+
+        <span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>async</span> Task UpdateAsync(Objective model)
+        {
+            <span style=color:#fff;font-weight:700>throw</span> <span style=color:#fff;font-weight:700>new</span> NotImplementedException();
+        }
+        
+        ...
+</code></pre></div><p>At this point, lets just make a couple functions return mock data, the rest can throw exceptions:</p><p>MockKeyResultRepository.cs</p><div class=highlight><pre style=color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c# data-lang=c#><span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>async</span> Task&lt;IReadOnlyList&lt;KeyResult&gt;&gt; GetAllByObjectiveAsync(Guid objectiveId) =&gt; <span style=color:#fff;font-weight:700>new</span>[]
+{
+    <span style=color:#fff;font-weight:700>new</span> KeyResult
+    {
+        Id = Guid.NewGuid(),
+        Active = <span style=color:#fff;font-weight:700>true</span>,
+        Completion = <span style=color:#ff0;font-weight:700>0</span>,
+        Description = <span style=color:#0ff;font-weight:700>&#34;Do something...&#34;</span>,
+        Title = <span style=color:#0ff;font-weight:700>&#34;Something&#34;</span>,
+        Priority = <span style=color:#ff0;font-weight:700>1</span>,
+        ObjectiveId = objectiveId
+    },
+    <span style=color:#fff;font-weight:700>new</span> KeyResult
+    {
+        Id = Guid.NewGuid(),
+        Active = <span style=color:#fff;font-weight:700>true</span>,
+        Completion = (<span style=color:#fff;font-weight:700>decimal</span>) <span style=color:#ff0;font-weight:700>0.35</span>,
+        Description = <span style=color:#0ff;font-weight:700>&#34;Do this...&#34;</span>,
+        Title = <span style=color:#0ff;font-weight:700>&#34;This&#34;</span>,
+        Priority = <span style=color:#ff0;font-weight:700>4</span>,
+        ObjectiveId = objectiveId
+    }
+    ,
+    <span style=color:#fff;font-weight:700>new</span> KeyResult
+    {
+        Id = Guid.NewGuid(),
+        Active = <span style=color:#fff;font-weight:700>true</span>,
+        Completion = (<span style=color:#fff;font-weight:700>decimal</span>) <span style=color:#ff0;font-weight:700>0.80</span>,
+        Description = <span style=color:#0ff;font-weight:700>&#34;Do that...&#34;</span>,
+        Title = <span style=color:#0ff;font-weight:700>&#34;This&#34;</span>,
+        Priority = <span style=color:#ff0;font-weight:700>10</span>,
+        ObjectiveId = objectiveId
+    }
+};
+</code></pre></div><p>MockObjectiveRepository.cs</p><div class=highlight><pre style=color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c# data-lang=c#><span style=color:#fff;font-weight:700>public</span> <span style=color:#fff;font-weight:700>async</span> Task&lt;IReadOnlyList&lt;Objective&gt;&gt; GetAllAsync() =&gt; <span style=color:#fff;font-weight:700>new</span>[]
+{
+    <span style=color:#fff;font-weight:700>new</span> Objective
+    {
+        Active = <span style=color:#fff;font-weight:700>true</span>,
+        Title = <span style=color:#0ff;font-weight:700>&#34;Q1 Growth&#34;</span>,
+        Description = <span style=color:#0ff;font-weight:700>&#34;Grow in Q1 by doing some productive things.&#34;</span>,
+        Id = Guid.NewGuid(),
+        StartDate = DateTime.Now.Subtract(TimeSpan.FromDays(<span style=color:#ff0;font-weight:700>4</span>)),
+        DueDate = DateTime.Now.AddDays(<span style=color:#ff0;font-weight:700>5</span>)
+    },
+    <span style=color:#fff;font-weight:700>new</span> Objective
+    {
+        Active = <span style=color:#fff;font-weight:700>true</span>,
+        Title = <span style=color:#0ff;font-weight:700>&#34;Lorem Ipsum&#34;</span>,
+        Description = <span style=color:#0ff;font-weight:700>&#34;A sentence describing what this is&#34;</span>,
+        Id = Guid.NewGuid(),
+        StartDate = DateTime.Now.Subtract(TimeSpan.FromDays(<span style=color:#ff0;font-weight:700>4</span>)),
+        DueDate = DateTime.Now.AddDays(<span style=color:#ff0;font-weight:700>5</span>)
+    },
+    <span style=color:#fff;font-weight:700>new</span> Objective
+    {
+        Active = <span style=color:#fff;font-weight:700>true</span>,
+        Title = <span style=color:#0ff;font-weight:700>&#34;Q2 Growth&#34;</span>,
+        Description = <span style=color:#0ff;font-weight:700>&#34;Grow in Q2 by doing some productive things.&#34;</span>,
+        Id = Guid.NewGuid(),
+        StartDate = DateTime.Now.Subtract(TimeSpan.FromDays(<span style=color:#ff0;font-weight:700>20</span>)),
+        DueDate = DateTime.Now.AddDays(<span style=color:#ff0;font-weight:700>5</span>)
+    },
+    <span style=color:#fff;font-weight:700>new</span> Objective
+    {
+        Active = <span style=color:#fff;font-weight:700>true</span>,
+        Title = <span style=color:#0ff;font-weight:700>&#34;Q3 Growth&#34;</span>,
+        Description = <span style=color:#0ff;font-weight:700>&#34;Grow in Q3 by doing some productive things.&#34;</span>,
+        Id = Guid.NewGuid(),
+        StartDate = DateTime.Now.Subtract(TimeSpan.FromDays(<span style=color:#ff0;font-weight:700>50</span>)),
+        DueDate = DateTime.Now.AddDays(<span style=color:#ff0;font-weight:700>100</span>)
+    },
+    <span style=color:#fff;font-weight:700>new</span> Objective
+    {
+        Active = <span style=color:#fff;font-weight:700>false</span>,
+        Title = <span style=color:#0ff;font-weight:700>&#34;Q4 Growth&#34;</span>,
+        Description = <span style=color:#0ff;font-weight:700>&#34;Grow in Q4 by doing some productive things.&#34;</span>,
+        Id = Guid.NewGuid(),
+        StartDate = DateTime.Now.AddDays(<span style=color:#ff0;font-weight:700>100</span>),
+        DueDate = DateTime.Now.AddDays(<span style=color:#ff0;font-weight:700>200</span>)
+    },
+};
+</code></pre></div><p>Now we have some mock repositories return <em>some</em> data.</p><hr><p>In the next post, I begin the UI with AntBlazor, using the mock data.</p><p><a href=https://lukeparker.dev/posts/building-a-beautiful-okr-with-antblazor/1>← Part 1</a> | <a href=https://lukeparker.dev/posts/building-a-beautiful-okr-with-antblazor/3>Part 3 →</a></p></div><footer><section class=see-also><h3>See also in OKR</h3><nav><ul><li><a href=/posts/building-a-beautiful-okr-with-antblazor/1/>Building a Beautiful OKR with AntBlazor - Part 1</a></li><li><a href=/posts/building-a-beautiful-okr-with-antblazor/0/>Building a Beautiful OKR with AntBlazor - Part 0</a></li></ul></nav></section><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//lukeparker-dev.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></footer></article></section></div><footer class=footer><section class=container><p>Software Architect at <a href=https://ssw.com.au>ssw.com.au</a> and <a href=https://tv.ssw.com.au>SSW TV tv.ssw.com</a></p>©
+2020 -
+2021
+Luke Parker
+·
+Powered by <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.</section></footer></main><script src=/js/dark-mode.min.aee9c8a464eb7b3534c7110f7c5e169e7039e2fd92710e0626d451d6725af137.js></script></body></html>
