@@ -3,7 +3,7 @@ authors = ["Luke Parker"]
 categories = ["Development"]
 date = 2021-08-25T14:00:00Z
 series = ["OKR"]
-slug = "building-a-beautiful-okr-with-antblazor/2"
+slug = "building-a-beautiful-okr-with-antblazor/3"
 tags = ["OKR", "C#", "AntBlazor", "AntDesign", "Blazor"]
 title = "Building a Beautiful OKR with AntBlazor - Part 3"
 
