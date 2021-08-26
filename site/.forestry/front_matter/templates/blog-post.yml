@@ -23,3 +23,5 @@ fields:
 - type: list
   name: authors
   label: authors
+pages:
+- site/content/posts/building-a-beautiful-okr-with-antblazor-part-3.md
