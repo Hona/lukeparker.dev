@@ -30,11 +30,11 @@ Add to OKR.Web/Pages/_Host.cshtml, just before the <head> tag closes:
 This references the default CSS file - you can replace it to easily get [dark mode](https://ant.design/docs/react/customize-theme), or a custom theme. There is also some JS interop required hence the import.
 
 OKR.Web/Startup.cs
-  
+
 ```cs
 services.AddAntDesign();
 ```
-  
+
 This is an extension method provided in the library, which adds the services all in one clean call. Some of the services added here is the message service, modal service, etc.
 
 OKR.Web/App.razor
@@ -57,7 +57,7 @@ That's it! We are now ready to build with these enterprise grade components.
 
 ### Removing Bootstrap
 
-A small caveat of the Blazor template provided by .NET is that all projects begin with Bootstrap and Open Iconic. The CSS file conflicts with AntBlazor and causes some centring issues. 
+A small caveat of the Blazor template provided by .NET is that all projects begin with Bootstrap and Open Iconic. The CSS file conflicts with AntBlazor and causes some centring issues.
 
 As we aren't using Bootstrap or Open Iconic in this project at all, we can just delete both of them completely:
 
@@ -91,7 +91,7 @@ OKR.Web/wwwroot/css/site.css
       }
 ```
 
-Delete everything from the file leaving just the Blazor error UI - which is the bar on the bottom. 
+Delete everything from the file leaving just the Blazor error UI - which is the bar on the bottom.
 
 ![](/uploads/blazor-error-ui.PNG)
 
@@ -128,6 +128,103 @@ You should see the following:
 ![](/uploads/antblazor-primary-button.PNG)
 
 If you got this far, you are doing great!
+
+## Designing the Main Layout
+
+The AntBlazor documentation is great, it provides [many examples of how to setup a typical layout](https://antblazor.com/en-US/components/layout).
+
+For this project, at least initially we don't need a complex setup, but for future proofing we can include a menu bar, with navigation, as well as a simple content area for our page (anything with a route) components.
+
+Lets replace the OKR.Web/Shared/MainLayout.razor with the following (using AntBlazor components)
+
+\`\`\`html
+@inherits LayoutComponentBase
+
+<Layout Style="min-height: 100vh; width: 100vw">
+    <Header Style="display: flex; align-items: center;">
+        <Title Level="2" Class="ant-menu-dark ant-menu-submenu-open" Style="padding: 0; margin: 0 12px 0 0; color: #ffffff">OKR</Title>
+        <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new\[\]{"2"})>
+            <AntDesign.MenuItem Key="1">nav 1</AntDesign.MenuItem>
+            <AntDesign.MenuItem Key="2">nav 2</AntDesign.MenuItem>
+            <AntDesign.MenuItem Key="3">nav 3</AntDesign.MenuItem>
+        </Menu>
+    </Header>
+    <AntDesign.Content Style="padding: 0 50px;">
+        <Breadcrumb Style="margin: 16px 0;">
+            <BreadcrumbItem>Home</BreadcrumbItem>
+            <BreadcrumbItem>List</BreadcrumbItem>
+            <BreadcrumbItem>App</BreadcrumbItem>
+        </Breadcrumb>
+        <div>@Body</div>
+    </AntDesign.Content>
+    <Footer Style="text-align: center;">©2021 Created by Luke Parker</Footer>
+</Layout>
+\`\`\`
+
+Your layout should look similar to this:
+
+![](/uploads/okr-layout.PNG)
+
+At this point we have a consistent visual story without thinking and we can begin designing the OKR cards. For the dashboard, we should have an overview of each OKR. The perfect component for this is the [Card](https://antblazor.com/en-US/components/card).
+
+Before we get started however, we need to build a view model to act as an aggregate object of the object and all the key results.
+
+Create a file: OKR.Web/ViewModels/OKRViewModel
+
+```cs
+public class OKRViewModel
+{
+    public Objective Objective { get; set; }
+    public IReadOnlyList<KeyResult> KeyResults { get; set; }
+}
+```
+  
+At this point we can assume that the OKR Card component will take a single `OKRViewModel` - where this data comes from right now doesn't matter.
+  
+Lets create OKR.Web/Shared/OKRCard.razor
+```html
+@using OKR.Web.ViewModels
+<Card Bordered="true" Hoverable="true" Class="okr-card"
+      Title="@(OKR?.Objective.Title ?? "Loading...")">
+    <Extra>
+        <AntDesign.Progress Type=ProgressType.Circle 
+                  Percent="@((int)_completion)" 
+                  Size=ProgressSize.Small />
+    </Extra>
+    <Body>
+        <AntList DataSource="@OKR.KeyResults">
+            <ListItem>
+                <ListItemMeta Description="@context.Description">
+                    <TitleTemplate>
+                        @context.Title
+                    </TitleTemplate>
+                </ListItemMeta>
+                <div style="width: 35%">
+                    <AntDesign.Progress Percent="@((int)(context.Completion * 100))" Size="@ProgressSize.Small" />
+                </div>
+            </ListItem>
+        </AntList>
+    </Body>
+</Card>
+  
+@code {
+    [Parameter]
+    public OKRViewModel OKR
+    {
+        get => _okr;
+        set
+        {
+            _okr = value;
+            _completion = value.KeyResults.Average(keyResult => keyResult.Completion * 100);
+        }
+    }
+  
+    private decimal _completion;
+    private OKRViewModel _okr;
+}
+```
+  
+Note that there is the `Class` property, instead of `class`. This is a custom AntBlazor property that passes the parameter to the real HTML element, which is very useful for custom styling.
 
 ***
 
