@@ -141,23 +141,23 @@ Lets replace the OKR.Web/Shared/MainLayout.razor with the following (using AntBl
 @inherits LayoutComponentBase
 
 <Layout Style="min-height: 100vh; width: 100vw">
-<Header Style="display: flex; align-items: center;">
-<Title Level="2" Class="ant-menu-dark ant-menu-submenu-open" Style="padding: 0; margin: 0 12px 0 0; color: #ffffff">OKR</Title>
-<Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new\[\]{"2"})>
-<AntDesign.MenuItem Key="1">nav 1</AntDesign.MenuItem>
-<AntDesign.MenuItem Key="2">nav 2</AntDesign.MenuItem>
-<AntDesign.MenuItem Key="3">nav 3</AntDesign.MenuItem>
-</Menu>
-</Header>
-<AntDesign.Content Style="padding: 0 50px;">
-<Breadcrumb Style="margin: 16px 0;">
-<BreadcrumbItem>Home</BreadcrumbItem>
-<BreadcrumbItem>List</BreadcrumbItem>
-<BreadcrumbItem>App</BreadcrumbItem>
-</Breadcrumb>
-<div>@Body</div>
-</AntDesign.Content>
-<Footer Style="text-align: center;">©2021 Created by Luke Parker</Footer>
+    <Header Style="display: flex; align-items: center;">
+        <Title Level="2" Class="ant-menu-dark ant-menu-submenu-open" Style="padding: 0; margin: 0 12px 0 0; color: #ffffff">OKR</Title>
+        <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new[]{"2"})>
+            <AntDesign.MenuItem Key="1">nav 1</AntDesign.MenuItem>
+            <AntDesign.MenuItem Key="2">nav 2</AntDesign.MenuItem>
+            <AntDesign.MenuItem Key="3">nav 3</AntDesign.MenuItem>
+        </Menu>
+    </Header>
+    <AntDesign.Content Style="padding: 0 50px;">
+        <Breadcrumb Style="margin: 16px 0;">
+            <BreadcrumbItem>Home</BreadcrumbItem>
+            <BreadcrumbItem>List</BreadcrumbItem>
+            <BreadcrumbItem>App</BreadcrumbItem>
+        </Breadcrumb>
+        <div>@Body</div>
+    </AntDesign.Content>
+    <Footer Style="text-align: center;">©2021 Created by Luke Parker</Footer>
 </Layout>
 ```
 
