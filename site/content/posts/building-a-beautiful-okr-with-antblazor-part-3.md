@@ -137,7 +137,7 @@ For this project, at least initially we don't need a complex setup, but for futu
 
 Lets replace the OKR.Web/Shared/MainLayout.razor with the following (using AntBlazor components)
 
-\`\`\`html
+```html
 @inherits LayoutComponentBase
 
 <Layout Style="min-height: 100vh; width: 100vw">
@@ -159,7 +159,7 @@ Lets replace the OKR.Web/Shared/MainLayout.razor with the following (using AntBl
 </AntDesign.Content>
 <Footer Style="text-align: center;">©2021 Created by Luke Parker</Footer>
 </Layout>
-\`\`\`
+```
 
 Your layout should look similar to this:
 
