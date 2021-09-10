@@ -141,23 +141,23 @@ Lets replace the OKR.Web/Shared/MainLayout.razor with the following (using AntBl
 @inherits LayoutComponentBase
 
 <Layout Style="min-height: 100vh; width: 100vw">
-    <Header Style="display: flex; align-items: center;">
-        <Title Level="2" Class="ant-menu-dark ant-menu-submenu-open" Style="padding: 0; margin: 0 12px 0 0; color: #ffffff">OKR</Title>
-        <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new\[\]{"2"})>
-            <AntDesign.MenuItem Key="1">nav 1</AntDesign.MenuItem>
-            <AntDesign.MenuItem Key="2">nav 2</AntDesign.MenuItem>
-            <AntDesign.MenuItem Key="3">nav 3</AntDesign.MenuItem>
-        </Menu>
-    </Header>
-    <AntDesign.Content Style="padding: 0 50px;">
-        <Breadcrumb Style="margin: 16px 0;">
-            <BreadcrumbItem>Home</BreadcrumbItem>
-            <BreadcrumbItem>List</BreadcrumbItem>
-            <BreadcrumbItem>App</BreadcrumbItem>
-        </Breadcrumb>
-        <div>@Body</div>
-    </AntDesign.Content>
-    <Footer Style="text-align: center;">©2021 Created by Luke Parker</Footer>
+<Header Style="display: flex; align-items: center;">
+<Title Level="2" Class="ant-menu-dark ant-menu-submenu-open" Style="padding: 0; margin: 0 12px 0 0; color: #ffffff">OKR</Title>
+<Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new\[\]{"2"})>
+<AntDesign.MenuItem Key="1">nav 1</AntDesign.MenuItem>
+<AntDesign.MenuItem Key="2">nav 2</AntDesign.MenuItem>
+<AntDesign.MenuItem Key="3">nav 3</AntDesign.MenuItem>
+</Menu>
+</Header>
+<AntDesign.Content Style="padding: 0 50px;">
+<Breadcrumb Style="margin: 16px 0;">
+<BreadcrumbItem>Home</BreadcrumbItem>
+<BreadcrumbItem>List</BreadcrumbItem>
+<BreadcrumbItem>App</BreadcrumbItem>
+</Breadcrumb>
+<div>@Body</div>
+</AntDesign.Content>
+<Footer Style="text-align: center;">©2021 Created by Luke Parker</Footer>
 </Layout>
 \`\`\`
 
@@ -178,10 +178,11 @@ public class OKRViewModel
     public IReadOnlyList<KeyResult> KeyResults { get; set; }
 }
 ```
-  
+
 At this point we can assume that the OKR Card component will take a single `OKRViewModel` - where this data comes from right now doesn't matter.
-  
+
 Lets create OKR.Web/Shared/OKRCard.razor
+
 ```html
 @using OKR.Web.ViewModels
 <Card Bordered="true" Hoverable="true" Class="okr-card"
@@ -223,11 +224,16 @@ Lets create OKR.Web/Shared/OKRCard.razor
     private OKRViewModel _okr;
 }
 ```
-  
+
 Note that there is the `Class` property, instead of `class`. This is a custom AntBlazor property that passes the parameter to the real HTML element, which is very useful for custom styling.
+
+Try running it, and you should get something that looks like this:
+
+![](/uploads/okr-initial-card.PNG)
 
 ***
 
+In this post we got started with building a component using the AntBlazor library.
 In the next post, I continue the UI layout with AntBlazor.
 
 [← Part 2](https://lukeparker.dev/posts/building-a-beautiful-okr-with-antblazor/2) | [Part 4 →](https://lukeparker.dev/posts/building-a-beautiful-okr-with-antblazor/4)
