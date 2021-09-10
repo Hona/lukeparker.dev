@@ -20,7 +20,7 @@ Using your package manager, add a reference to the latest version of `AntDesign`
 
 Now with the package installed, we have to reference the assets and add a few modules to the dependency injection.
 
-Add to OKR.Web/Pages/_Host.cshtml, just before the <head> tag closes:
+Add to OKR.Web/Pages/_Host.cshtml, just before the \`<head>\` tag closes:
 
 ```html
 <link href="_content/AntDesign/css/ant-design-blazor.css" rel="stylesheet" />
